@@ -7,3 +7,23 @@ spring:
     url: jdbc:mysql://localhost:3306/chenyouxin
     username: root
     password: 1442411359abc
+  # File Upload Config
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+# MyBatis-Plus Config
+mybatis-plus:
+  configuration:
+    # 关闭驼峰转下划线（数据库列名是驼峰格式）
+    map-underscore-to-camel-case: false
+
+# JWT Config
+jwt:
+  secret: mySecretKeyForJwtTokenGenerationAndValidation123456
+  expiration: 86400000  # 24 hours in milliseconds
+
+# File Upload Config
+file:
+  upload-dir: uploads/avatars

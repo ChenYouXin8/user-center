@@ -1,29 +1,23 @@
 spring:
   application:
     name: user-center
-  # DataSource Config
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/chenyouxin
-    username: root
-    password: 1442411359abc
-  # File Upload Config
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/chenyouxin}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:}
   servlet:
     multipart:
       max-file-size: 5MB
       max-request-size: 10MB
 
-# MyBatis-Plus Config
 mybatis-plus:
   configuration:
-    # 关闭驼峰转下划线（数据库列名是驼峰格式）
     map-underscore-to-camel-case: false
 
-# JWT Config
 jwt:
-  secret: mySecretKeyForJwtTokenGenerationAndValidation123456
-  expiration: 86400000  # 24 hours in milliseconds
+  secret: ${JWT_SECRET:}
+  expiration: ${JWT_EXPIRATION:86400000}
 
-# File Upload Config
 file:
-  upload-dir: uploads/avatars
+  upload-dir: ${FILE_UPLOAD_DIR:uploads/avatars}

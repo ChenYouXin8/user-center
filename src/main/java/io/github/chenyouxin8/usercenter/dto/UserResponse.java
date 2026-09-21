@@ -10,6 +10,7 @@ public record UserResponse(
         Integer gender,
         String phone,
         Integer isValid,
+        Integer userRole,
         LocalDateTime createTime
 ) {
 }

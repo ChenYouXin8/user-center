@@ -27,6 +27,8 @@ public class User {
 
     private Integer isValid;
 
+    private Integer userRole;
+
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;

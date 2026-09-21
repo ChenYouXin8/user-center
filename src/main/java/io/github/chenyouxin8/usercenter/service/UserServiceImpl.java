@@ -87,6 +87,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(email);
         user.setPassword(encodedPassword);
         user.setIsValid(1);
+        user.setUserRole(0);
         try {
             userMapper.insert(user);
         } catch (DataIntegrityViolationException exception) {
@@ -414,6 +415,7 @@ public class UserServiceImpl implements UserService {
                 user.getGender(),
                 user.getPhone(),
                 user.getIsValid(),
+                user.getUserRole(),
                 user.getCreateTime()
         );
     }

@@ -90,6 +90,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--
+                      JDK 21 的 WEPollSelectorImpl 会在 %TEMP% 下建一个 AF_UNIX
+                      套接字文件作为 Selector 的唤醒管道。部分 Windows 机器上 C: 盘
+                      的 %TEMP% 被文件系统过滤驱动（多为安全软件）拦住，AF_UNIX
+                      connect 直接返回 EINVAL，于是 Selector.open() 失败、Tomcat
+                      起不来（Unable to establish loopback connection）。
+                      把 UDS 临时目录挪到 target/ 即可绕开；换机器或修好 %TEMP%
+                      后可以直接删掉这段配置。
+                    -->
+                    <jvmArguments>-Djdk.net.unixdomain.tmpdir=${project.build.directory}</jvmArguments>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

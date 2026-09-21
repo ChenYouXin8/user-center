@@ -36,3 +36,12 @@ build/
 .m2-local-repository/
 .mvn/codex-settings.xml
 uploads/
+
+# 运行日志
+*.log
+
+# 前端依赖与构建产物（frontend 有自己的 .gitignore，这里再兜底）
+frontend/node_modules/
+frontend/dist/
+frontend/src/.umi/
+frontend/.umi-production/
